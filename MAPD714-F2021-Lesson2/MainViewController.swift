@@ -277,8 +277,8 @@ class MainViewController: UIViewController {
                     subEquationResult = num
                 }
                 else{
-                    var operator_2 = ""
                     var counter_3 = 0
+                    
                     for oper in operatorSecondOrder{
                         if (counter_3 == (counter - 1)){
                             if (oper == "X"){
