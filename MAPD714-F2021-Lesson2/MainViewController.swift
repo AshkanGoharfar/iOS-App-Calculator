@@ -213,10 +213,10 @@ class MainViewController: UIViewController {
 //        print("full equation: " + fullequ)
         print("Full euq: ", fullequ)
         let element10 = fullequ.replacingOccurrences(of: "%+", with: "X1/100+", options: .literal, range: nil)
-        print("element before : ", element10)
+//        print("element before : ", element10)
         let element11 = element10.replacingOccurrences(of: "%-", with: "X1/100-", options: .literal, range: nil)
         fullequ = element11
-        print("element after : ", element11)
+//        print("element after : ", element11)
         let fullequList = fullequ.components(separatedBy: ["+", "-"])
         var result :String = "0"
         var numOfPlus = 0
@@ -238,23 +238,22 @@ class MainViewController: UIViewController {
             }
             counter_5 += 1
         }
-        var result1 :String = "0"
+
         var finalres = ""
         var counter2 = 0
 
         for element in fullequList{
             print("elem: " + element)
-            var result_b :String = "0"
 //            print("element before : ", element)
             let element0 = element.replacingOccurrences(of: "%+", with: "X1/100+", options: .literal, range: nil)
-            print("element before : ", element0)
+//            print("element before : ", element0)
             let element1 = element0.replacingOccurrences(of: "%-", with: "X1/100-", options: .literal, range: nil)
             print("element after : ", element1)
             let element2 = element1.replacingOccurrences(of: "%", with: "X1/100X", options: .literal, range: nil)
             let element3 = element2.replacingOccurrences(of: "XX", with: "X", options: .literal, range: nil)
             let element4 = element3.replacingOccurrences(of: "X/", with: "/", options: .literal, range: nil)
             let element = element4.replacingOccurrences(of: "_", with: "-1X", options: .literal, range: nil)
-            print("element after : ", element)
+//            print("element after : ", element)
             var numOfMul = 0
             var numOfDev = 0
             var operatorSecondOrder = [String]()
@@ -266,16 +265,15 @@ class MainViewController: UIViewController {
                 else if (char == "/"){
                     numOfDev += 1
                     operatorSecondOrder.append(String(char))
-
                 }
             }
             if (numOfMul > 0 || numOfDev > 0){
             let numbs = element.components(separatedBy: ["X", "/"])
             var counter = 0
-            var result2 = "0"
+            var subEquationResult = "0"
             for num in numbs{
                 if (counter == 0){
-                    result2 = num
+                    subEquationResult = num
                 }
                 else{
                     var operator_2 = ""
@@ -283,10 +281,10 @@ class MainViewController: UIViewController {
                     for oper in operatorSecondOrder{
                         if (counter_3 == (counter - 1)){
                             if (oper == "X"){
-                                result2 = String(Double(result2)! * Double(num)!)
+                                subEquationResult = String(Double(subEquationResult)! * Double(num)!)
                             }
                             else if (oper == "/"){
-                                result2 = String(Double(result2)! / Double(num)!)
+                                subEquationResult = String(Double(subEquationResult)! / Double(num)!)
                             }
                         }
                         counter_3 += 1
@@ -294,7 +292,7 @@ class MainViewController: UIViewController {
                 }
                 counter += 1
             }
-            finalres = result2
+            finalres = subEquationResult
             }
             
             else{
@@ -334,7 +332,7 @@ class MainViewController: UIViewController {
 
             counter2 += 1
         }
-        result = String(Double(round(1000*Double(result)!)/1000))
+        result = String(Double(round(10000000000*Double(result)!)/10000000000))
         self.ResultDisplayLabel.text = result
         afterEquation = "1"
         print("eqaul res: ", ResultDisplayLabel.text!)
@@ -354,7 +352,7 @@ class MainViewController: UIViewController {
             return
         }
             self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "_"
-            print("minus plus: ", ResultDisplayLabel.text!)
+//            print("minus plus: ", ResultDisplayLabel.text!)
         flagOperator = "1"
     }
     
@@ -372,7 +370,7 @@ class MainViewController: UIViewController {
             return
         }
         self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "%"
-        print("Remained button: ", ResultDisplayLabel.text!)
+//        print("Remained button: ", ResultDisplayLabel.text!)
         flagPercentOperaot = "1"
     }
     
@@ -390,7 +388,7 @@ class MainViewController: UIViewController {
             return
         }
                 self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "+"
-                print("Plus button: ", ResultDisplayLabel.text!)
+//                print("Plus button: ", ResultDisplayLabel.text!)
         flagOperator = "1"
     }
     
@@ -408,7 +406,7 @@ class MainViewController: UIViewController {
             return
         }
         self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "-"
-        print("minus button: ", ResultDisplayLabel.text!)
+//        print("minus button: ", ResultDisplayLabel.text!)
         flagOperator = "1"
     }
     
@@ -426,7 +424,7 @@ class MainViewController: UIViewController {
             return
         }
         self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "X"
-        print("Multiple button: ", ResultDisplayLabel.text!)
+//        print("Multiple button: ", ResultDisplayLabel.text!)
         flagOperator = "1"
     }
     
@@ -444,7 +442,7 @@ class MainViewController: UIViewController {
             return
         }
         self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "/"
-        print("Devision button: ", ResultDisplayLabel.text!)
+//        print("Devision button: ", ResultDisplayLabel.text!)
         flagOperator = "1"
     }
     
@@ -461,7 +459,7 @@ class MainViewController: UIViewController {
             return
         }
         self.ResultDisplayLabel.text = ResultDisplayLabel.text! + "."
-        print("Floating point button: ", ResultDisplayLabel.text!)
+//        print("Floating point button: ", ResultDisplayLabel.text!)
     }
     
     //Life cylce function
