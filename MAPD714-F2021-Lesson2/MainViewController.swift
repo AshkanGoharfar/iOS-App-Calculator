@@ -211,11 +211,12 @@ class MainViewController: UIViewController {
             print("Suffixx: :: ")
         }
 //        print("full equation: " + fullequ)
-        print("Full euq: ", fullequ)
+        print("Full euq before: ", fullequ)
         let element10 = fullequ.replacingOccurrences(of: "%+", with: "X1/100+", options: .literal, range: nil)
-//        print("element before : ", element10)
         let element11 = element10.replacingOccurrences(of: "%-", with: "X1/100-", options: .literal, range: nil)
-        fullequ = element11
+                let element12 = element11.replacingOccurrences(of: "/_", with: "X_1/", options: .literal, range: nil)
+//        let element13 = element12.replacingOccurrences(of: "_", with: "-", options: .literal, range: nil)
+        fullequ = element12
 //        print("element after : ", element11)
         let fullequList = fullequ.components(separatedBy: ["+", "-"])
         var result :String = "0"
@@ -244,16 +245,16 @@ class MainViewController: UIViewController {
 
         for element in fullequList{
             print("elem: " + element)
-//            print("element before : ", element)
+            print("element before : ", element)
             let element0 = element.replacingOccurrences(of: "%+", with: "X1/100+", options: .literal, range: nil)
 //            print("element before : ", element0)
             let element1 = element0.replacingOccurrences(of: "%-", with: "X1/100-", options: .literal, range: nil)
-            print("element after : ", element1)
+//            print("element after : ", element1)
             let element2 = element1.replacingOccurrences(of: "%", with: "X1/100X", options: .literal, range: nil)
             let element3 = element2.replacingOccurrences(of: "XX", with: "X", options: .literal, range: nil)
             let element4 = element3.replacingOccurrences(of: "X/", with: "/", options: .literal, range: nil)
             let element = element4.replacingOccurrences(of: "_", with: "-1X", options: .literal, range: nil)
-//            print("element after : ", element)
+            print("element after : ", element)
             var numOfMul = 0
             var numOfDev = 0
             var operatorSecondOrder = [String]()
@@ -315,7 +316,6 @@ class MainViewController: UIViewController {
             else{
                 var operator_3 = ""
                 var counter4 = 0
-                
                 for oper_1 in operatorFirstOrder{
                     if (counter4 == (counter2 - 1)){
                         if (oper_1 == "+"){
