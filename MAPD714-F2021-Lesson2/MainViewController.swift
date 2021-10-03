@@ -226,14 +226,15 @@ class MainViewController: UIViewController {
 
         if (String(fullequ.suffix(Int("1")!)) == "%"){
             print("Suffixx: :: ")
-            let s3 = fullequ.replacingCharacters(in: ...fullequ.endIndex, with: "X1/100")
+//            let e4 = fullequ.remove(at: myString.endIndex)
+            let s3 = fullequ.replacingCharacters(in: fullequ.endIndex..., with: "X1")
             fullequ = String(s3)
+            print("Suffixx: :: ")
         }
-
-        print("aaaa: " + fullequ)
+//        print("aaaa: " + fullequ)
         let components = fullequ.components(separatedBy: ["+", "-"])
         var result :String = "0"
-        print(components)
+//        print(components)
         var numOfPlus = 0
         var numOfMinus = 0
         var flagMinus = "0"
